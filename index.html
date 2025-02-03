@@ -737,6 +737,79 @@
             position: fixed;
         }
     }
+
+    /* CTA Button styling */
+    .cta-button .btn-lg {
+        padding: 12px 30px;
+        font-weight: 500;
+        border-radius: 50px;
+        background: var(--accent-primary);
+        color: var(--bg-primary);
+        border: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    .cta-button .btn-lg:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        background: #fff;
+        color: var(--accent-primary);
+    }
+
+    @media (max-width: 768px) {
+        .cta-button {
+            margin-top: 2rem;
+        }
+        .cta-button .btn-lg {
+            padding: 10px 25px;
+            font-size: 1rem;
+        }
+    }
+
+    /* Updated Skill Badge hover styles */
+    .skill-badge {
+        /* Keep existing base styles */
+        background: var(--bg-secondary);
+        border: 1px solid var(--accent-primary);
+        color: var(--text-primary);
+        padding: 12px 15px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        min-height: 45px;
+    }
+
+    .skill-badge:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        background: var(--accent-primary);
+        color: var(--bg-primary);
+        border-color: transparent;
+        font-weight: 500;
+    }
+
+    .skill-badge::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, transparent 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .skill-badge:hover::before {
+        opacity: 0.2;
+    }
   </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="80">
@@ -788,15 +861,8 @@
             <p>
               I’m a final-year AI & ML Engineering student passionate about using technology to solve real-world problems. I’m currently building EcoVest, a platform that makes sustainable investing accessible. With a strong foundation in programming (including Java) and problem-solving, I enjoy working on impactful projects. I’ve also earned certifications in Python for Data Science and IBM Blockchain Essentials, always eager to learn and collaborate in AI, ML, and sustainability.
           </div>
-          <div class="contact-info">
-            <p class="mb-2">
-              📍 Thalassery, Kannur, Kerala, India<br>
-              📱 8113936995 | 📧 <a href="mailto:mohdadilsiraju@proton.me" class="text-white">mohdadilsiraju@proton.me</a>
-            </p>
-            <div class="social-links">
-              <a href="https://linkedin.com/in/mohammed-adil-siraju" target="_blank" class="btn btn-light me-2">LinkedIn</a>
-              <a href="https://github.com/adilsiraju" target="_blank" class="btn btn-light">GitHub</a>
-            </div>
+          <div class="cta-button text-center text-md-start">
+            <a href="#contact" class="btn btn-light btn-lg">Get in Touch</a>
           </div>
         </div>
       </div>

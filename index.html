@@ -581,6 +581,162 @@
             gap: 10px;
         }
     }
+
+    /* Enhanced Responsive Styles */
+    /* Extra small devices (phones, less than 576px) */
+    @media (max-width: 575.98px) {
+        .display-4 {
+            font-size: 2rem;
+        }
+
+        .lead {
+            font-size: 1rem;
+        }
+
+        .profile-container {
+            width: 140px;
+            height: 140px;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+        }
+
+        .skills-category {
+            padding: 15px;
+        }
+
+        .skill-badge {
+            font-size: 0.8rem;
+            padding: 8px 12px;
+        }
+
+        .container {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+        #contact .btn {
+            width: 100%;
+            margin: 5px 0;
+        }
+    }
+
+    /* Small devices (landscape phones, 576px and up) */
+    @media (min-width: 576px) and (max-width: 767.98px) {
+        .display-4 {
+            font-size: 2.25rem;
+        }
+
+        .profile-container {
+            width: 160px;
+            height: 160px;
+        }
+    }
+
+    /* Medium devices (tablets, 768px and up) */
+    @media (min-width: 768px) and (max-width: 991.98px) {
+        .profile-container {
+            width: 180px;
+            height: 180px;
+        }
+
+        .skills-grid {
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        }
+    }
+
+    /* Large devices (desktops, 992px and up) */
+    @media (min-width: 992px) {
+        .container {
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+    }
+
+    /* Fix for mobile navigation */
+    @media (max-width: 991.98px) {
+        .navbar-collapse {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--navbar-bg);
+            padding: 1rem;
+            border-radius: 0 0 15px 15px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .navbar-nav {
+            padding: 10px 0;
+        }
+
+        .nav-item {
+            margin: 5px 0;
+        }
+    }
+
+    /* Project cards responsive fix */
+    @media (max-width: 991.98px) {
+        .project-card {
+            margin-bottom: 20px;
+        }
+
+        .project-card img {
+            height: 160px;
+        }
+    }
+
+    /* Skills section responsive layout */
+    @media (max-width: 767.98px) {
+        .skills-category {
+            margin-bottom: 15px;
+        }
+
+        .col-md-4:last-child .skills-category {
+            margin-bottom: 0;
+        }
+
+        .skills-grid {
+            gap: 8px;
+        }
+    }
+
+    /* Contact section responsive spacing */
+    @media (max-width: 575.98px) {
+        #contact .contact-details {
+            text-align: left;
+        }
+
+        #contact .social-links {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #contact .btn {
+            margin: 5px 0;
+        }
+    }
+
+    /* Typography responsive adjustments */
+    @media (max-width: 767.98px) {
+        h1, .h1 { font-size: calc(1.8rem + 1.5vw); }
+        h2, .h2 { font-size: calc(1.5rem + 1vw); }
+        h3, .h3 { font-size: calc(1.3rem + 0.6vw); }
+        p { font-size: 0.95rem; }
+    }
+
+    /* Fix for sticky header on mobile */
+    @supports (-webkit-touch-callout: none) {
+        /* CSS specific to iOS devices */
+        .navbar-fixed-top {
+            position: fixed;
+        }
+    }
   </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="80">
@@ -1016,6 +1172,29 @@
     document.querySelectorAll('section').forEach(section => {
         observer.observe(section);
     });
+
+    // Add touch event handling for mobile
+    document.addEventListener('touchstart', function() {}, {passive: true});
+
+    // Improve mobile menu behavior
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            if (window.getComputedStyle(navbarToggler).display !== 'none') {
+                navbarCollapse.classList.remove('show');
+            }
+        });
+    });
+
+    // Handle viewport height issues on mobile
+    function setMobileVH() {
+        let vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+    }
+
+    window.addEventListener('resize', setMobileVH);
+    setMobileVH();
   </script>
 
   <!-- Add structured data for SEO -->
